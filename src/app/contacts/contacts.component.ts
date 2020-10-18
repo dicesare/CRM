@@ -9,6 +9,17 @@ const contacts = [{first_name: 'Tatum', last_name: 'Vernon', email: 'tvernon0@ly
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.css'],
+  animations: [
+    trigger('contactsAnimation', [
+      state('active', style({
+        opacity: '1'
+      })),
+      transition('void => *', [
+        style({transform: 'translateY(-100px)', opacity: '0'}),
+        animate('1000ms ease-in-out')
+      ])
+    ])
+  ]
 })
 export class ContactsComponent implements OnInit {
   contacts= contacts;
